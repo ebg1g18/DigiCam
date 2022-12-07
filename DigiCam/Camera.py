@@ -63,8 +63,10 @@ class Camera:
         Args:
             file (IO): [description]
             settings (Camera.Settings): [description]"""
+        
+        #print(settings.__dict__())
         # Write each setting in the settings dictionary to the file as long as the setting is not None
-        for setting_name, setting in dict(settings).items():
+        for setting_name, setting in settings.__dict__().items():
             if setting is not None:
                 file.write(' '*3 + f"<setcamera property=\"{setting_name}\" value=\"{setting}\"/>\n")
 
@@ -83,7 +85,6 @@ class Camera:
         # Command Camera
         system(f'\"{self.control_cmd_location}\" /filename {self.save_folder}{image_name} {command}')
 		
-        #subprocess.Popen([f'\"{self.control_cmd_location}\" /filename {self.save_folder}{image_name} {command}'], shell=True)
 
     def run_script(self, script_name: str) -> None:
         """Runs the passed script within the script location.

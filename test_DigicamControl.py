@@ -26,6 +26,7 @@ class TestDigiCamControl(TestCase):
         test_setting: Camera.Settings = Camera.Settings(aperture='2.8', exposure_control='1',
                                                         shutter_speed='10', iso='AUTO')
 
+
         test_camera.setup(test_setting)
 
     def test_capture(self) -> None:
@@ -35,5 +36,9 @@ class TestDigiCamControl(TestCase):
         test_camera.capture_single_image(autofocus=True)
 
 
+
+
 if __name__ == '__main__':
     main()
+    
+    

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dccscript>
+  <commands>
+   <setcamera property="aperature" value="2.8"/>
+   <setcamera property="ec" value="1"/>
+   <setcamera property="shutter" value="10"/>
+   <setcamera property="iso" value="AUTO"/>
+  </commands>
+</dccscript>
