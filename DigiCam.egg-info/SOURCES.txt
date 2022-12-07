@@ -1,0 +1,8 @@
+LICENSE
+README.md
+setup.py
+DigiCam.egg-info/PKG-INFO
+DigiCam.egg-info/SOURCES.txt
+DigiCam.egg-info/dependency_links.txt
+DigiCam.egg-info/top_level.txt
+test/test_DigicamControl.py

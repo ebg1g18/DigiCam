@@ -8,12 +8,12 @@ __email__ = 'jacobtaylorcassady@outlook.com'
 from os import system, getcwd, makedirs
 from os.path import isfile
 from typing import Union, IO, Optional, Dict
-
+import subprocess
 
 class Camera:
     """Camera class object.  Used to control a DSLR camera using digiCamControl's command line interface."""
-    def __init__(self, control_cmd_location: str, image_type: Optional[str] = None,
-                 collection_name: str = '', save_folder: str = getcwd()):
+    def __init__(self, control_cmd_location: str, save_folder: str, image_index: int, image_type: Optional[str] = None,
+                 collection_name: str = ''):
         """Constructor.
 
         Args:
@@ -29,7 +29,7 @@ class Camera:
         # Initialize variables
         self.control_cmd_location = control_cmd_location
         self.image_type = self.set_image_type(image_type)
-        self.image_index = 0
+        self.image_index = image_index
         self.collection_name = collection_name
         self.save_folder = save_folder
 
@@ -78,8 +78,12 @@ class Camera:
 
         # Build image name
         image_name = self.collection_name + '_' + str(self.image_index) + self.image_type
+        print("self:", self.control_cmd_location)
+		
         # Command Camera
         system(f'\"{self.control_cmd_location}\" /filename {self.save_folder}{image_name} {command}')
+		
+        #subprocess.Popen([f'\"{self.control_cmd_location}\" /filename {self.save_folder}{image_name} {command}'], shell=True)
 
     def run_script(self, script_name: str) -> None:
         """Runs the passed script within the script location.
